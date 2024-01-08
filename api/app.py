@@ -6,10 +6,11 @@ app = Flask(__name__)
 
 models_dir = os.path.abspath('models')
 
-import nltk
-from nltk.corpus import stopwords
-nltk.download('stopwords')
 
+stopwords_file = 'stopwords/indonesian.txt'
+stopwords_list = []
+with open(stopwords_file, 'r') as file:
+    stopwords_list = [line.strip() for line in file]
 import re
 def casefolding(text):
     text = text.lower()
@@ -19,7 +20,7 @@ def casefolding(text):
 
 #tokenizing
 def nGramToken(text, ngram=2):
-    words = [word for word in text.split(" ") if word not in set(stopwords.words('indonesian'))]
+    words = [word for word in text.split(" ") if word not in set(stopwords_list)]
     
     # Keep single words
     if len(words) == 1:
@@ -29,7 +30,7 @@ def nGramToken(text, ngram=2):
     ans = [' '.join(ngram) for ngram in temp]
     return ans
 def stopword_removal(text):
-    filters = stopwords.words('indonesian')
+    filters = stopwords_list
     x = []
     data =[]
     def func(x):
