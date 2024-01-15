@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Dashboard</title>
+
+    <meta name="author" content="Team Sentifix" />
+    <meta name="description" content="BTNG Feedback Sentiment Analysis" />
+    <meta
+      name="keywords"
+      content="BTNG, Basic Training Next Generation, Feedback Sentiment Analysis"
+    />
+
+    <!-- Favicons -->
+    <link href="/img/logo/favicon.png" rel="icon" />
+    <link href="/img/logo/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="/vendor/simple-datatables/style.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-between">
+        <a href="dashboard.html" class="logo d-flex align-items-center">
+          <img src="/img/logo/logo.png" alt="" />
+          <span class="d-none d-lg-block">Sentifix</span>
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+      </div>
+      <!-- End Logo -->
+
+      <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+          <li class="nav-item dropdown pe-3">
+            <a
+              class="nav-link nav-profile d-flex align-items-center pe-0"
+              href="#"
+              data-bs-toggle="dropdown"
+            >
+              <img
+                src="/img/avatars/admin.png"
+                alt="Profile"
+                class="rounded-circle"
+              />
+              <p class="d-none d-md-block dropdown-toggle ps-2 mb-0">
+                Welcome,
+                <span>John Wick</span>
+              </p></a
+            ><!-- End Profile Image Icon -->
+
+            <ul
+              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"
+            >
+              <li>
+                <a
+                  class="dropdown-item d-flex align-items-center"
+                  href="index.html"
+                >
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Keluar</span>
+                </a>
+              </li>
+            </ul>
+            <!-- End Profile Dropdown Items -->
+          </li>
+          <!-- End Profile Nav -->
+        </ul>
+      </nav>
+      <!-- End Icons Navigation -->
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <!-- End Dashboard Nav -->
+
+        <li class="nav-heading">Data Master</li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/input">
+            <i class="bi bi-table"></i>
+            <span>Input</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/file">
+            <i class="bi bi-table"></i>
+            <span>Reviews</span>
+          </a>
+        </li>
+        <!-- End Review Page Nav -->
+      </ul>
+    </aside>
+    <!-- End Sidebar-->
+
+    <!-- ======= Main ======= -->
+    <main id="main" class="main">
+      <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="dashboard.html">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Dashboard</li>
+          </ol>
+        </nav>
+      </div>
+      <!-- End Page Title -->
+
+      <section class="section dashboard relative w-100">
+        <div
+          id="loading"
+          class="bg-white position-absolute d-flex justify-content-center align-items-center w-100"
+          style="height: 100vh; z-index: 1000"
+        >
+          <div>
+            <div class="spinner-grow" role="status"></div>
+            <div class="spinner-grow" role="status"></div>
+            <div class="spinner-grow" role="status"></div>
+            <div class="spinner-grow" role="status"></div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Top side columns -->
+          <div class="col-lg-12">
+            <div class="row">
+              <!-- Web Division Card -->
+              <div class="col-xxl-4 col-md-6">
+                <div class="card info-card outline-logo">
+                  <div class="card-body">
+                    <h5 class="card-title">Web Division</h5>
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
+                      >
+                        <img
+                          class="division-icons"
+                          src="/img/logo/web.png"
+                          alt="Web"
+                        />
+                      </div>
+                      <div class="ps-3">
+                        <p id="webPos" class="small text-success">
+                          45 Positive
+                        </p>
+                        <span id="webTot" class="text-muted small"
+                          >Out of 200 reviews</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Web Division Card -->
+
+              <!-- Data Analyst Division Card -->
+              <div class="col-xxl-4 col-md-6">
+                <div class="card info-card outline-logo">
+                  <div class="card-body">
+                    <h5 class="card-title">Data Analyst Division</h5>
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
+                      >
+                        <img
+                          class="division-icons"
+                          src="/img/logo/data-analyst.png"
+                          alt="Data Analyst"
+                        />
+                      </div>
+                      <div class="ps-3">
+                        <p id="dataPos" class="small text-success">
+                          45 Positive
+                        </p>
+                        <span id="dataTot" class="text-muted small"
+                          >Out of 200 reviews</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Data Analyst Division Card -->
+
+              <!-- Game Division Card -->
+              <div class="col-xxl-4 col-md-6">
+                <div class="card info-card outline-logo">
+                  <div class="card-body">
+                    <h5 class="card-title">Game Division</h5>
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
+                      >
+                        <img
+                          class="division-icons"
+                          src="/img/logo/game.png"
+                          alt="Game"
+                        />
+                      </div>
+                      <div class="ps-3">
+                        <p id="gamePos" class="small text-success">
+                          45 Positive
+                        </p>
+                        <span id="gameTot" class="text-muted small"
+                          >Out of 200 reviews</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Game Division Card -->
+
+              <!-- Network Division Card -->
+              <div class="col-xxl-4 col-md-6">
+                <div class="card info-card outline-logo">
+                  <div class="card-body">
+                    <h5 class="card-title">Network Division</h5>
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
+                      >
+                        <img
+                          class="division-icons"
+                          src="/img/logo/network.png"
+                          alt="Network"
+                        />
+                      </div>
+                      <div class="ps-3">
+                        <p id="netPos" class="small text-success">
+                          45 Positive
+                        </p>
+                        <span id="netTot" class="text-muted small"
+                          >Out of 200 reviews</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Network Division Card -->
+
+              <!-- Mobile Division Card -->
+              <div class="col-xxl-4 col-md-6">
+                <div class="card info-card outline-logo">
+                  <div class="card-body">
+                    <h5 class="card-title">Mobile Division</h5>
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
+                      >
+                        <img
+                          class="division-icons"
+                          src="/img/logo/mobile.png"
+                          alt="Mobile"
+                        />
+                      </div>
+                      <div class="ps-3">
+                        <p id="mobPos" class="small text-success">
+                          45 Positive
+                        </p>
+                        <span id="mobTot" class="text-muted small"
+                          >Out of 200 reviews</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Mobile Division Card -->
+
+              <!-- Multimedia Division Card -->
+              <div class="col-xxl-4 col-md-6">
+                <div class="card info-card outline-logo">
+                  <div class="card-body">
+                    <h5 class="card-title">Multimedia Division</h5>
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
+                      >
+                        <img
+                          class="division-icons"
+                          src="/img/logo/multimedia.png"
+                          alt="Multimedia"
+                        />
+                      </div>
+                      <div class="ps-3">
+                        <p id="mulPos" class="small text-success">
+                          45 Positive
+                        </p>
+                        <span id="mulTot" class="text-muted small"
+                          >Out of 200 reviews</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Multimedia Division Card -->
+            </div>
+          </div>
+          <!-- End Top side columns -->
+
+          <!-- Bottom side columne -->
+          <div class="col-lg-6">
+            <div class="card info-card">
+              <h5 class="card-title text-center mb-3">Data Graph</h5>
+              <div class="card-body">
+                <!-- Data Graph -->
+                <div
+                  id="barChart"
+                  style="min-height: 400px"
+                  class="echart"
+                ></div>
+
+                <!-- End Data Graph -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card info-card">
+              <h5 class="card-title text-center mb-3">Last Entry</h5>
+              <div class="card-body">
+                <!-- Last Entry -->
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">No</th>
+                      <th scope="col">Reviews</th>
+                      <th scope="col">Division</th>
+                      <th scope="col">Analysis</th>
+                    </tr>
+                  </thead>
+                  <tbody id="reviewsTableBody"></tbody>
+                </table>
+                <!-- End Last Entry -->
+              </div>
+            </div>
+          </div>
+          <!-- End Bottom side columne -->
+        </div>
+      </section>
+    </main>
+    <!-- End Main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+      <div class="copyright">
+        Copyright &copy; <span id="year"></span>
+        <strong><span>Team Sentifix</span></strong
+        >. All Rights Reserved
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/echarts/echarts.min.js"></script>
+    <script src="/vendor/simple-datatables/simple-datatables.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/js/main.js"></script>
+
+    <script>
+      var tableBody = document.getElementById("reviewsTableBody");
+      var loading = document.getElementById("loading");
+
+      var mulTot = document.getElementById("mulTot");
+      var mulPos = document.getElementById("mulPos");
+
+      var webTot = document.getElementById("webTot");
+      var webPos = document.getElementById("webPos");
+
+      var gameTot = document.getElementById("gameTot");
+      var gamePos = document.getElementById("gamePos");
+
+      var netTot = document.getElementById("netTot");
+      var netPos = document.getElementById("netPos");
+
+      var mobTot = document.getElementById("mobTot");
+      var mobPos = document.getElementById("mobPos");
+
+      var dataTot = document.getElementById("dataTot");
+      var dataPos = document.getElementById("dataPos");
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Function to update the table with results
+        let neutralCount = 0;
+        let positiveCount = 0;
+        let NegativeCount = 0;
+
+        let webPositive = 0;
+        let webTotal = 0;
+
+        let gamePositive = 0;
+        let gameTotal = 0;
+
+        let dataPositive = 0;
+        let dataTotal = 0;
+
+        let mobPositive = 0;
+        let mobTotal = 0;
+
+        let netPositive = 0;
+        let netTotal = 0;
+
+        let mulPositive = 0;
+        let mulTotal = 0;
+
+        function updateTable(results) {
+          console.log("tableBody:", tableBody);
+          tableBody.innerHTML = "";
+
+          const limitedResults = results.slice(0, 5);
+
+          limitedResults.forEach(function (result, index) {
+            var row =
+              "<tr>" +
+              '<th scope="row">' +
+              (index + 1) +
+              "</th>" +
+              "<td>" +
+              result.review +
+              "</td>" +
+              "<td>" +
+              result.division +
+              "</td>" +
+              "<td>" +
+              result.date +
+              "</td>" +
+              '<td><button class="badge rounded-pill ' +
+              (result.analisis === "POSITIVE"
+                ? "text-bg-success border-0"
+                : result.analisis === "NEGATIVE"
+                ? "text-bg-danger border-0"
+                : result.analisis === "NEUTRAL"
+                ? "text-bg-primary border-0"
+                : "") +
+              '">' +
+              (result.analisis === "POSITIVE"
+                ? "Positive"
+                : result.analisis === "NEGATIVE"
+                ? "Negative"
+                : result.analisis === "NEUTRAL"
+                ? "Neutral"
+                : "Unknown") +
+              "</button></td>" +
+              "</tr>";
+
+            tableBody.innerHTML += row;
+          });
+        }
+
+        function fetchReviewsData() {
+          loading.classList.remove("d-none");
+
+          fetch("/api/get_reviews")
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              if (data.reviews) {
+                loading.classList.add("d-none");
+                data.reviews.forEach((element) => {
+                  if (element.division === "web") {
+                    if (element.analisis === "POSITIVE") {
+                      webPositive++;
+                    }
+                    webTotal++;
+                  } else if (element.division === "game") {
+                    if (element.analisis === "POSITIVE") {
+                      gamePositive++;
+                    }
+                    gameTotal++;
+                  } else if (element.division === "data analis") {
+                    if (element.analisis === "POSITIVE") {
+                      dataPositive++;
+                    }
+                    dataTotal++;
+                  } else if (element.division === "multimedia") {
+                    if (element.analisis === "POSITIVE") {
+                      mulPositive++;
+                    }
+                    mulTotal++;
+                  } else if (element.division === "mobile") {
+                    if (element.analisis === "POSITIVE") {
+                      mobPositive++;
+                    }
+                    mobTot++;
+                  } else if (element.division === "jaringan") {
+                    if (element.analisis === "POSITIVE") {
+                      netPositive++;
+                    }
+                    netTotal++;
+                  }
+
+                  gameTot.innerText = `Out of ${gameTotal} reviews`;
+                  gamePos.innerText = `${gamePositive} Positive`;
+
+                  webTot.innerText = `Out of ${webTotal} reviews`;
+                  webPos.innerText = `${webPositive} Positive`;
+
+                  netTot.innerText = `Out of ${netTotal} reviews`;
+                  netPos.innerText = `${netPositive} Positive`;
+
+                  mobTot.innerText = `Out of ${mobTotal} reviews`;
+                  mobPos.innerText = `${mobPositive} Positive`;
+
+                  mulTot.innerText = `Out of ${mulTotal} reviews`;
+                  mulPos.innerText = `${mulPositive} Positive`;
+
+                  dataTot.innerText = `Out of ${dataTotal} reviews`;
+                  dataPos.innerText = `${dataPositive} Positive`;
+                });
+                data.reviews.forEach((element) => {
+                  if (element.analisis === "POSITIVE") {
+                    positiveCount++;
+                  } else if (element.analisis === "NEGATIVE") {
+                    NegativeCount++;
+                  } else if (element.analisis === "NEUTRAL") {
+                    neutralCount++;
+                  }
+                  console.log(neutralCount);
+                });
+
+                updateTable(data.reviews);
+              } else {
+                console.error("Invalid response format");
+              }
+
+              echarts.init(document.querySelector("#barChart")).setOption({
+                xAxis: {
+                  type: "category",
+                  data: ["Positive", "Negative", "Neutral"],
+                },
+                yAxis: {
+                  type: "value",
+                },
+                series: [
+                  {
+                    data: [positiveCount, NegativeCount, neutralCount],
+                    type: "bar",
+                    itemStyle: {
+                      color: function (params) {
+                        if (params.dataIndex === 0) {
+                          return "#28A745";
+                        } else if (params.dataIndex === 1) {
+                          return "#DC3545";
+                        } else {
+                          return "#808080";
+                        }
+                      },
+                    },
+                  },
+                ],
+              });
+            })
+            .catch((error) => {
+              console.error("Error during fetch:", error.message);
+            });
+        }
+
+        // Initial fetch when the page loads
+        fetchReviewsData();
+
+        // Attach click event to the import button
+        document
+          .getElementById("importButton")
+          .addEventListener("click", function () {
+            handleFileUpload();
+            fetchReviewsData();
+          });
+      });
+    </script>
+  </body>
+</html>

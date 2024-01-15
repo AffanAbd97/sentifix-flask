@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Reviews</title>
+
+    <meta name="author" content="Team Sentifix" />
+    <meta name="description" content="BTNG Feedback Sentiment Analysis" />
+    <meta
+      name="keywords"
+      content="BTNG, Basic Training Next Generation, Feedback Sentiment Analysis"
+    />
+
+    <!-- Favicons -->
+    <link href="/img/logo/favicon.png" rel="icon" />
+    <link href="/img/logo/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="/vendor/simple-datatables/style.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-between">
+        <a href="dashboard.html" class="logo d-flex align-items-center">
+          <img src="/img/logo/logo.png" alt="" />
+          <span class="d-none d-lg-block">Sentifix</span>
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+      </div>
+      <!-- End Logo -->
+
+      <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+          <li class="nav-item dropdown pe-3">
+            <a
+              class="nav-link nav-profile d-flex align-items-center pe-0"
+              href="#"
+              data-bs-toggle="dropdown"
+            >
+              <img
+                src="/img/avatars/admin.png"
+                alt="Profile"
+                class="rounded-circle"
+              />
+              <p class="d-none d-md-block dropdown-toggle ps-2 mb-0">
+                Welcome,
+                <span>John Wick</span>
+              </p></a
+            ><!-- End Profile Image Icon -->
+
+            <ul
+              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"
+            >
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Keluar</span>
+                </a>
+              </li>
+            </ul>
+            <!-- End Profile Dropdown Items -->
+          </li>
+          <!-- End Profile Nav -->
+        </ul>
+      </nav>
+      <!-- End Icons Navigation -->
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <!-- End Dashboard Nav -->
+
+        <li class="nav-heading">Data Master</li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/input">
+            <i class="bi bi-table"></i>
+            <span>Input</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/file">
+            <i class="bi bi-table"></i>
+            <span>Reviews</span>
+          </a>
+        </li>
+        <!-- End Review Page Nav -->
+      </ul>
+    </aside>
+    <!-- End Sidebar-->
+
+    <!-- ======= Main ======= -->
+    <main id="main" class="main">
+      <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="dashboard.html">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Reviews</li>
+          </ol>
+        </nav>
+      </div>
+      <!-- End Page Title -->
+
+      <section class="section dashboard">
+        <div class="row">
+          <!-- Reviews columns -->
+          <div class="col-lg-12">
+            <div class="card info-card">
+              <h5 class="card-title text-center mb-3">Reviews Table</h5>
+              <div class="card-body">
+                <!-- Reviews Table -->
+                <input type="file" accept=".xls, .xlsx, .csv" id="fileInput" />
+                <button
+                  id="importButton"
+                  class="btn btn-success rounded-pill mb-3"
+                >
+                  <i class="bi bi-upload"></i>
+                  <span class="ms-2">Import Data</span>
+                </button>
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">No</th>
+                      <th scope="col">Reviews</th>
+                      <th scope="col">Division</th>
+                      <th scope="col">Date Entries</th>
+                      <th scope="col">Analysis</th>
+                    </tr>
+                  </thead>
+                  <tbody id="reviewsTableBody">
+                    <!-- Existing table rows go here -->
+                  </tbody>
+                </table>
+                <!-- End Reviews Table -->
+              </div>
+            </div>
+          </div>
+          <!-- End Reviews column -->
+        </div>
+      </section>
+    </main>
+    <!-- End Main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+      <div class="copyright">
+        Copyright &copy; <span id="year"></span>
+        <strong><span>Team Sentifix</span></strong
+        >. All Rights Reserved
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/simple-datatables/simple-datatables.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/js/main.js"></script>
+    <script>
+      var tableBody = document.getElementById("reviewsTableBody");
+      document.addEventListener("DOMContentLoaded", function () {
+        // Function to update the table with results
+        function updateTable(results) {
+          console.log("tableBody:", tableBody);
+          tableBody.innerHTML = "";
+
+          results.forEach(function (result, index) {
+            var row =
+              "<tr>" +
+              '<th scope="row">' +
+              (index + 1) +
+              "</th>" +
+              "<td>" +
+              result.text +
+              "</td>" +
+              "<td>" +
+              result.divisi +
+              "</td>" +
+              "<td>" +
+              result.timestamp +
+              "</td>" +
+              '<td><button class="badge rounded-pill ' +
+              (result.prediction === 1
+                ? "text-bg-success border-0"
+                : result.prediction === 0
+                ? "text-bg-danger border-0"
+                : result.prediction === 2
+                ? "text-bg-primary border-0"
+                : "") +
+              '">' +
+              (result.prediction === 1
+                ? "Positive"
+                : result.prediction === 0
+                ? "Negative"
+                : result.prediction === 2
+                ? "Neutral"
+                : "Unknown") +
+              "</button></td>" +
+              "</tr>";
+
+            tableBody.innerHTML += row;
+          });
+        }
+
+        // Function to handle file upload and update the table
+        function handleFileUpload() {
+          var fileInput = document.getElementById("fileInput");
+          var formData = new FormData();
+          formData.append("file", fileInput.files[0]);
+          tableBody.innerHTML =
+            '<tr><td colspan="5" class="text-center">Loading...</td></tr>';
+          fetch("/predict", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => {
+              console.log(response);
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              console.log(data);
+              if (data.results) {
+                updateTable(data.results);
+              } else {
+                console.error("Invalid response format");
+              }
+            })
+            .catch((error) => {
+              console.error("Error during fetch:", error.message);
+            });
+        }
+
+        // Attach click event to the import button
+        document
+          .getElementById("importButton")
+          .addEventListener("click", function () {
+            handleFileUpload();
+          });
+      });
+    </script>
+  </body>
+</html>
